@@ -9,7 +9,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-    origin:  `${process.env.CORS_ORIGIN}` || 'http://localhost:3000' , // Replace with the IP of the device running the frontend
+    origin:   '*'  , // Replace with the IP of the device running the frontend
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 }));

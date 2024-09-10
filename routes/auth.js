@@ -111,41 +111,6 @@ router.post('/adminlogin', async (req , res)=>{
 
 
 
-
-
-
-
-// router.post('/mark', async (req, res) => {
-//     const { userId , date, astatus } = req.body;
-
-//     if (!userId) {
-//         return res.status(400).json({ message: 'User ID is required' });
-//     }
-
-
-//     // const today = new Date().setHours(0, 0, 0, 0);  // Reset time to 00:00:00 to ensure date comparison
-    
-//     try {
-//         const attendance = new Attendance({
-//             userId,
-//             date,
-//             astatus
-//         });
-
-//         await attendance.save();
-
-//         res.status(200).json({ message: 'Attendance marked successfully' });
-//     } catch (error) {
-//         if (error.code === 11000) { // Duplicate key error
-//             return res.status(400).json({ message: 'Attendance already marked for today' });
-//         }
-//         console.error(error);
-//         res.status(500).json({ message: 'Server error' });
-//     }
-// });
-
-
-
 router.post('/mark-attendance', async (req, res) => {
     const { uId,  aStatus  , userName } = req.body;  // Accept status and note from the request
     // console.log("\n\n\n\n\n\nHere is Req:" , req.body , "\n\n\n\n\n\n\n")
@@ -202,18 +167,6 @@ router.post('/mark-attendance', async (req, res) => {
 
 
 
-
-// router.get('/attendance:user', async (req, res) => {
-//     try {
-//         // const { userId } = req.query;
-        
-//         console.log('\n\n\n\n', req.params , "\n\n\n\n");
-//         // const records = await Attendance.find({ userId, date , astatus });
-//         // res.json(records);
-//     } catch (err) {
-//         res.status(500).json({ error: err.message });
-//     }
-// });
 
 
 
@@ -332,8 +285,7 @@ router.get('/pending-leave-requests', async (req, res) => {
 
 router.put( '/leave/status'   ,async (req, res) => {
     
-    // console.log(req.body);
-    // console.log(typeof(leaveId))
+ 
     try {
           // Receiving leaveId and new status from the request body
           const { leaveId, leaveUpdate } = req.body;
@@ -362,8 +314,6 @@ router.put( '/leave/status'   ,async (req, res) => {
 router.get('/allusers/:userId' , async (req , res)=>{
     
     
-    // console.log(typeof(id));
-    // console.log(Admin.find().data)
 try{ 
     const id = req.params.userId;
     //   const authAdmin = Admin.findById({adminUid});
@@ -395,35 +345,7 @@ catch(err){
 
 
 
-
-// const { userId } = req.body;
-// const today = new Date().setHours(0, 0, 0, 0);  // Reset time to 00:00:00 to ensure date comparison
-
-// try {
-//     // Check if attendance has already been marked for today
-//     const existingAttendance = await Attendance.findOne({
-//         userId,
-//         date: today
-//     });
-
-//     if (existingAttendance) {
-//         return res.status(400).json({ message: 'Attendance already marked for today' });
-//     }
-
-//     // Mark attendance
-//     const attendance = new Attendance({
-//         userId,
-//         date: today
-//     });
-//     await attendance.save();
-
-//     res.status(200).json({ message: 'Attendance marked successfully' });
-// } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ message: 'Server error' });
-// }
-// });
-
+//   
 // DELETE user by ID
 router.delete('/deluser/:id', async (req, res) => {
     const { id } = req.params;
